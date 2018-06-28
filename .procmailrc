@@ -1,0 +1,47 @@
+##
+## .procmailrc
+##
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+SHELL="/bin/bash"
+SENDMAIL="/usr/local/sbin/sendmail"
+DEFAULT="$HOME/Maildir/"
+MAILDIR="$HOME/Maildir/"
+
+## Logging options.
+LOGFILE=/home/cgough/.cgough.procmailrc.log
+VERBOSE=yes
+
+## Filter out known viruses
+:0:
+* ^X-VIRUS-FOUND: YES
+.Z-Viruses/
+* ^X-Virus-Found: YES
+.Z-Viruses/
+
+## Handle SPAM 
+## MIMEDefang/SA discards spam that with a score of 20 or more.
+## SPAM with scores between 6 and 20 are tagged and moved.
+#:0:
+#
+#* ^X-MD-SPAM: YES
+#* ^X-MD-SPAM-Level: \*\*\*\*\*\*\*\*
+#.Z-Spamtrap/
+
+## For some reason these headers are being downcased.
+:0:
+* ^X-Md-Spam: YES
+.Z-Spamtrap/
+
+## ebay messages.
+:0:
+* ^From.*ebay
+.Ebay/
+
+## The "c" sends a copy to vacation as well as to your mailbox.
+#:0 c 
+#| /usr/local/bin/vacation username
+
+## Forwarding all mail to another address
+#:0: 
+#*
+#! brukshut@gmail.com 
