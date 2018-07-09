@@ -21,7 +21,7 @@
 
 ;; Disable auto-identing
 (setq indent-tabs-mode nil)
-(electric-indent-mode -1)
+(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
 
 ;; Turn on font-lock mode for Emacs
 (global-font-lock-mode t)
