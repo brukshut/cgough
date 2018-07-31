@@ -88,7 +88,7 @@ red="${txtrst}[${HOSTNAME}:\w] ${bldred}\u${txtrst}% "
 purple="${txtrst}[${HOSTNAME}:\w] ${bldpur}\u${txtrst}% "
 yellow="${txtrst}[${HOSTNAME}:\w] ${bldylw}\u${txtrst}% "
 green="${txtrst}[${HOSTNAME}:\w] ${bldgrn}\u${txtrst}% "
-PS1=green
+PS1=$green
 
 ## check for emacs
 alias emacs=/usr/local/bin/emacs
