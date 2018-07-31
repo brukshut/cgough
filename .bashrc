@@ -1,6 +1,8 @@
 #!/bin/bash
 
+##
 ## .bashrc for cgough
+##
 
 ## FUNCTIONS
 function xtitle {
@@ -19,15 +21,13 @@ function xtitle {
 
 unalias -a
 
-PYTHON_EGG_CACHE=/tmp
 HISTCONTROL=ignoredups
 HISTSIZE=20000
 PAGER=less
 TERM=xterm
 MANPATH=/usr/share/man:/usr/local/share/man
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
-PATHDIR="${HOME}/.rvm/bin /usr/local/opt/elasticsearch@5.6 /usr/local/opt/kibana@5.6"
-PATHDIR="$PATHDIR"
+PATHDIR=""
 for DIR in $PATHDIR; do
   for BINDIR in bin sbin; do
     if [ -d ${DIR}/${BINDIR} ]; then 
@@ -41,85 +41,57 @@ for DIR in $PATHDIR; do
   done
 done
 
-JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
-PATH=$JAVA_HOME/bin:$PATH
-export JAVA_HOME PATH
-
 if [ -f ~/.aws ]; then
   source ~/.aws
 fi
 
 ## PS1
-
-## Bash built-in colors.  
-txtblk='\[\e[0;30m\]' # Black - Regular
-txtred='\[\e[0;31m\]' # Red
-txtgrn='\[\e[0;32m\]' # Green
-txtylw='\[\e[0;33m\]' # Yellow
-txtblu='\[\e[0;34m\]' # Blue
-txtpur='\[\e[0;35m\]' # Purple
-txtcyn='\[\e[0;36m\]' # Cyan
-txtwht='\[\e[0;37m\]' # White
-bldblk='\[\e[1;30m\]' # Black - Bold
-bldred='\[\e[1;31m\]' # Red
-bldgrn='\[\e[1;32m\]' # Green
-bldylw='\[\e[1;33m\]' # Yellow
-bldblu='\[\e[1;34m\]' # Blue
-bldpur='\[\e[1;35m\]' # Purple
-bldcyn='\[\e[1;36m\]' # Cyan
-bldwht='\[\e[1;37m\]' # White
-unkblk='\[\e[4;30m\]' # Black - Underline
-undred='\[\e[4;31m\]' # Red
-undgrn='\[\e[4;32m\]' # Green
-undylw='\[\e[4;33m\]' # Yellow
-undblu='\[\e[4;34m\]' # Blue
-undpur='\[\e[4;35m\]' # Purple
-undcyn='\[\e[4;36m\]' # Cyan
-undwht='\[\e[4;37m\]' # White
-bakblk='\[\e[40m\]'   # Black - Background
-bakred='\[\e[41m\]'   # Red
-badgrn='\[\e[42m\]'   # Green
-bakylw='\[\e[43m\]'   # Yellow
-bakblu='\[\e[44m\]'   # Blue
-bakpur='\[\e[45m\]'   # Purple
-bakcyn='\[\e[46m\]'   # Cyan
-bakwht='\[\e[47m\]'   # White
-txtrst='\[\e[0m\]'    # Text Reset
+## bash built-in colors  
+txtblk='\[\e[0;30m\]' ## black regular
+txtred='\[\e[0;31m\]' ## red
+txtgrn='\[\e[0;32m\]' ## green
+txtylw='\[\e[0;33m\]' ## yellow
+txtblu='\[\e[0;34m\]' ## blue
+txtpur='\[\e[0;35m\]' ## purple
+txtcyn='\[\e[0;36m\]' ## cyan
+txtwht='\[\e[0;37m\]' ## white
+bldblk='\[\e[1;30m\]' ## black  bold
+bldred='\[\e[1;31m\]' ## red    bold
+bldgrn='\[\e[1;32m\]' ## green  bold
+bldylw='\[\e[1;33m\]' ## yellow bold
+bldblu='\[\e[1;34m\]' ## blue   bold
+bldpur='\[\e[1;35m\]' ## purple bold 
+bldcyn='\[\e[1;36m\]' ## cyan   bold
+bldwht='\[\e[1;37m\]' ## white  bold
+unkblk='\[\e[4;30m\]' ## black  underline
+undred='\[\e[4;31m\]' ## red    underline
+undgrn='\[\e[4;32m\]' ## green  underline
+undylw='\[\e[4;33m\]' ## yellow underline
+undblu='\[\e[4;34m\]' ## blue   underline
+undpur='\[\e[4;35m\]' ## purple underline
+undcyn='\[\e[4;36m\]' ## cyan   underline
+undwht='\[\e[4;37m\]' ## white  underline
+bakblk='\[\e[40m\]'   ## black  background
+bakred='\[\e[41m\]'   ## red    background
+badgrn='\[\e[42m\]'   ## green  background
+bakylw='\[\e[43m\]'   ## yellow background
+bakblu='\[\e[44m\]'   ## blue   background
+bakpur='\[\e[45m\]'   ## purple background
+bakcyn='\[\e[46m\]'   ## cyan   background
+bakwht='\[\e[47m\]'   ## white  background
+txtrst='\[\e[0m\]'    ## text reset
 
 FQDN=`/bin/hostname -f`
-PQDN=${FQDN%.tedc.co}
 HOSTNAME=`/bin/hostname`
-ENVIRON=${PQDN#$HOSTNAME.}
+blue="${txtrst}[${HOSTNAME}:\w] ${bldblu}\u${txtrst}% "
+red="${txtrst}[${HOSTNAME}:\w] ${bldred}\u${txtrst}% "
+purple="${txtrst}[${HOSTNAME}:\w] ${bldpur}\u${txtrst}% "
+yellow="${txtrst}[${HOSTNAME}:\w] ${bldylw}\u${txtrst}% "
+green="${txtrst}[${HOSTNAME}:\w] ${bldgrn}\u${txtrst}% "
+PS1=green
 
-blue="${txtrst}[${PQDN}:\w] ${bldblu}\u${txtrst}% "
-red="${txtrst}[${PQDN}:\w] ${bldred}\u${txtrst}% "
-purple="${txtrst}[${PQDN}:\w] ${bldpur}\u${txtrst}% "
-yellow="${txtrst}[${PQDN}:\w] ${bldylw}\u${txtrst}% "
-green="${txtrst}[${PQDN}:\w] ${bldgrn}\u${txtrst}% "
-
-case $ENVIRON in 
-  prod)
-    PS1=$red
-    ;;
-  sandbox)
-    PS1=$blue
-    ;;
-  staging)
-    PS1=$green
-    ;;
-  *)
-    PS1=$red
-    ;;
-esac
-
-## Check for vim
-if [ `type -p vim` ]; then 
-  alias vi="vim"
-fi
-
+## check for emacs
 alias emacs=/usr/local/bin/emacs
-
-## Check for emacs
 if [ `type -p emacs` ]; then
   EDITOR=emacs
   alias emacs="emacs -nw"
@@ -128,12 +100,8 @@ else
   EDITOR=vim
 fi
 
-alias graphite='ssh -q -N -L 8080:admin002.prod.tedc.co:8080 cgough@gw &'
-alias cheft="${HOME}/bin/autochef.sh"
-alias rest="ssh -q -N -L 9070:10.0.0.5:9070 gw &"
-
 ## Export variables.
-export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR SVN_EDITOR
+export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR
 
 ## Options here.
 set -o emacs
