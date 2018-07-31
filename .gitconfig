@@ -1,0 +1,17 @@
+[user]
+	name = Christian Gough
+	email = brukshut@gmail.com
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	editor = /usr/local/bin/emacs
+
+[alias]
+	pretty = log --graph --pretty=format:'%Cred%h%Creset - %Cgreen%cn%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+
+[push]
+	default = simple
+
