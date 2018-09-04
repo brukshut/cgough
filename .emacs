@@ -10,6 +10,13 @@
 
 (setq load-path (cons "~/.emacs.d/site-lisp" load-path))
 
+;; yaml mode
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+;; get rid of slashes for cut-n-paste
+(set-display-table-slot standard-display-table 'wrap ?\ )
+
 ;; Disable transient-mark-mode (for emacs 23.1)
 (transient-mark-mode 0)
 
@@ -46,7 +53,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (docker-compose-mode terraform-mode))))
+ '(package-selected-packages (quote (yaml-mode docker-compose-mode terraform-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

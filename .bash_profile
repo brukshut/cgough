@@ -1,15 +1,13 @@
 #!/bin/bash
 
-## Ticket Evolution
-## ${HOME}/.bash_profile 
+## .bash_profile 
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+date
 
-/bin/date
-if [ -e ${HOME}/.bashrc ]; then
-  source ${HOME}/.bashrc
-fi
+[ -e ${HOME}/.bashrc ] && source ${HOME}/.bashrc
 
 ## keychain
 if [ -e ${HOME}/.ssh/id_rsa ]; then
-  /usr/bin/keychain -q $HOME/.ssh/id_rsa
-  source $HOME/.keychain/$HOSTNAME-sh
+  keychain -q ${HOME}/.ssh/id_rsa
+  source ${HOME}/.keychain/$HOSTNAME-sh
 fi

@@ -26,7 +26,7 @@ HISTSIZE=20000
 PAGER=less
 TERM=xterm
 MANPATH=/usr/share/man:/usr/local/share/man
-PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
+PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin
 PATHDIR=""
 for DIR in $PATHDIR; do
   for BINDIR in bin sbin; do
@@ -99,6 +99,9 @@ if [ `type -p emacs` ]; then
 else
   EDITOR=vim
 fi
+
+## kubectl completion
+source <(kubectl completion bash)
 
 ## Export variables.
 export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR
