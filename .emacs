@@ -10,10 +10,6 @@
 
 (setq load-path (cons "~/.emacs.d/site-lisp" load-path))
 
-;; yaml mode
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-
 ;; get rid of slashes for cut-n-paste
 (set-display-table-slot standard-display-table 'wrap ?\ )
 
@@ -39,6 +35,10 @@
 (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
 (put 'set-goal-column 'disabled nil)
 
+;; yaml mode
+(require 'yaml-mode nil 'missing-okay)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
 ;; ELPA stuff
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -53,7 +53,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (yaml-mode docker-compose-mode terraform-mode))))
+ '(package-selected-packages
+   (quote
+    (json-mode yaml-mode docker-compose-mode terraform-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

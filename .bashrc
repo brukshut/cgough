@@ -101,7 +101,7 @@ else
 fi
 
 ## kubectl completion
-source <(kubectl completion bash)
+[ $(which kubectl) ] && source <(kubectl completion bash)
 
 ## Export variables.
 export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR
