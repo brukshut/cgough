@@ -26,7 +26,7 @@ HISTSIZE=20000
 PAGER=less
 TERM=xterm
 MANPATH=/usr/share/man:/usr/local/share/man
-PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin
+PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin:${HOME}/.rbenv/shims:${HOME}/.rbenv/bin
 PATHDIR=""
 for DIR in $PATHDIR; do
   for BINDIR in bin sbin; do
@@ -102,6 +102,9 @@ fi
 
 ## kubectl completion
 [ $(which kubectl) ] && source <(kubectl completion bash)
+
+## rbenv
+eval "$(rbenv init -)"
 
 ## Export variables.
 export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR
