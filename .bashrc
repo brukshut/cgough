@@ -26,7 +26,7 @@ HISTSIZE=20000
 PAGER=less
 TERM=xterm
 MANPATH=/usr/share/man:/usr/local/share/man
-PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin:${HOME}/.rbenv/shims:${HOME}/.rbenv/bin
+PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin
 PATHDIR=""
 for DIR in $PATHDIR; do
   for BINDIR in bin sbin; do
@@ -40,6 +40,12 @@ for DIR in $PATHDIR; do
     fi
   done
 done
+
+## rbenv
+for dir in bin shims; do
+  [[ -d ${HOME}/.rbenv/${dir} ]] && PATH=${PATH}:${HOME}/.rbenv/${dir}
+done
+[[ $(which rbenv) ]] && eval "$(rbenv init -)"
 
 if [ -f ~/.aws ]; then
   source ~/.aws
@@ -88,7 +94,7 @@ red="${txtrst}[${HOSTNAME}:\w] ${bldred}\u${txtrst}% "
 purple="${txtrst}[${HOSTNAME}:\w] ${bldpur}\u${txtrst}% "
 yellow="${txtrst}[${HOSTNAME}:\w] ${bldylw}\u${txtrst}% "
 green="${txtrst}[${HOSTNAME}:\w] ${bldgrn}\u${txtrst}% "
-PS1=$green
+PS1=$red
 
 ## check for emacs
 alias emacs=/usr/local/bin/emacs
@@ -101,10 +107,8 @@ else
 fi
 
 ## kubectl completion
-[ $(which kubectl) ] && source <(kubectl completion bash)
+[[ $(which kubectl) ]] && source <(kubectl completion bash)
 
-## rbenv
-eval "$(rbenv init -)"
 
 ## Export variables.
 export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR
