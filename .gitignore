@@ -6,6 +6,5 @@
 !.procmailrc
 !.gitconfig
 !.gitignore
-
-
-
+!.mailfilter
+!.muttrc

@@ -1,0 +1,4 @@
+##
+## ~/.mailfilter
+##
+DEFAULT="$HOME/Maildir/"
