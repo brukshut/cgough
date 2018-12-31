@@ -48,7 +48,7 @@ done
 [[ $(which rbenv) ]] && eval "$(rbenv init -)"
 
 ## pyenv
-eval "$(pyenv init -)"
+[[ $(which pyenv) ]] && eval "$(pyenv init -)"
 
 function berks_upload {
   ${HOME}/.rbenv/shims/berks upload ${PWD##*/} --no-freeze --force  
@@ -104,7 +104,7 @@ red="${txtrst}[${HOSTNAME}:\w] ${bldred}\u${txtrst}% "
 purple="${txtrst}[${HOSTNAME}:\w] ${bldpur}\u${txtrst}% "
 yellow="${txtrst}[${HOSTNAME}:\w] ${bldylw}\u${txtrst}% "
 green="${txtrst}[${HOSTNAME}:\w] ${bldgrn}\u${txtrst}% "
-PS1=$red
+PS1=$purple
 
 ## check for emacs
 alias emacs=/usr/local/bin/emacs
