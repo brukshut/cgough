@@ -47,6 +47,16 @@ for dir in bin shims; do
 done
 [[ $(which rbenv) ]] && eval "$(rbenv init -)"
 
+## pyenv
+eval "$(pyenv init -)"
+
+function berks_upload {
+  ${HOME}/.rbenv/shims/berks upload ${PWD##*/} --no-freeze --force  
+}
+
+
+
+
 if [ -f ~/.aws ]; then
   source ~/.aws
 fi
@@ -105,6 +115,8 @@ if [ `type -p emacs` ]; then
 else
   EDITOR=vim
 fi
+
+
 
 ## kubectl completion
 [[ $(which kubectl) ]] && source <(kubectl completion bash)
