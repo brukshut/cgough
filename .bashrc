@@ -4,7 +4,7 @@
 ## .bashrc for cgough
 ##
 
-## FUNCTIONS
+## functions
 function xtitle {
   case $TERM in
     vt100 | xterm* | dtterm )
@@ -17,10 +17,12 @@ function xtitle {
  export PS1=$PS1$TITLEBAR
 }
 
-## END FUNCTIONS
+function berks_upload {
+  ${HOME}/.rbenv/shims/berks upload ${PWD##*/} --no-freeze --force
+}
+## end functions
 
 unalias -a
-
 HISTCONTROL=ignoredups
 HISTSIZE=20000
 PAGER=less
@@ -30,36 +32,12 @@ PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin
 PATHDIR=""
 for DIR in $PATHDIR; do
   for BINDIR in bin sbin; do
-    if [ -d ${DIR}/${BINDIR} ]; then 
-      PATH=$PATH:${DIR}/${BINDIR}
-    fi
+    [[ -d ${DIR}/${BINDIR} ]] && PATH=$PATH:${DIR}/${BINDIR}
   done
   for MANDIR in ${DIR}/man ${DIR}/share/man; do
-    if [ -d $MANDIR ]; then
-      MANPATH=$MANPATH:$MANDIR
-    fi
+    [[ -d $MANDIR ]] && MANPATH=$MANPATH:$MANDIR
   done
 done
-
-## rbenv
-for dir in bin shims; do
-  [[ -d ${HOME}/.rbenv/${dir} ]] && PATH=${PATH}:${HOME}/.rbenv/${dir}
-done
-[[ $(which rbenv) ]] && eval "$(rbenv init -)"
-
-## pyenv
-eval "$(pyenv init -)"
-
-function berks_upload {
-  ${HOME}/.rbenv/shims/berks upload ${PWD##*/} --no-freeze --force  
-}
-
-
-
-
-if [ -f ~/.aws ]; then
-  source ~/.aws
-fi
 
 ## PS1
 ## bash built-in colors  
@@ -104,32 +82,36 @@ red="${txtrst}[${HOSTNAME}:\w] ${bldred}\u${txtrst}% "
 purple="${txtrst}[${HOSTNAME}:\w] ${bldpur}\u${txtrst}% "
 yellow="${txtrst}[${HOSTNAME}:\w] ${bldylw}\u${txtrst}% "
 green="${txtrst}[${HOSTNAME}:\w] ${bldgrn}\u${txtrst}% "
-PS1=$red
+rasta="${txtrst}${bldred}[${txtrst}${bldylw}${HOSTNAME}:\w${txtrst}${bldred}]${txtrst} ${bldgrn}\u%${txtrst} "
+PS1=$rasta
 
 ## check for emacs
 alias emacs=/usr/local/bin/emacs
-if [ `type -p emacs` ]; then
-  EDITOR=emacs
-  alias emacs="emacs -nw"
-  alias emasc="emacs -nw"
-else
-  EDITOR=vim
-fi
+[[ `type -p emacs` ]] &&
+  ( EDITOR=emacs
+    alias emacs="emacs -nw"
+    alias emasc="emacs -nw" ) || EDITOR=vim
 
+## rbenv
+for dir in bin shims; do
+  [[ -d ${HOME}/.rbenv/${dir} ]] && PATH=${PATH}:${HOME}/.rbenv/${dir}
+done
+[[ $(which rbenv) ]] && eval "$(rbenv init -)"
 
+## pyenv
+[[ $(which pyenv) ]] && eval "$(pyenv init -)"
 
 ## kubectl completion
 [[ $(which kubectl) ]] && source <(kubectl completion bash)
 
-
-## Export variables.
+## export variables
 export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR
 
-## Options here.
+## options
 set -o emacs
 
-## Aliases.
+## aliases
 alias clean="rm *~ >& /dev/null; rm .*~ >& /dev/null; rm \#* >& /dev/null"
 
-## Call functions.
+## call functions
 xtitle
