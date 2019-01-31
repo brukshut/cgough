@@ -39,29 +39,6 @@ for DIR in $PATHDIR; do
   done
 done
 
-<<<<<<< HEAD
-=======
-## rbenv
-for dir in bin shims; do
-  [[ -d ${HOME}/.rbenv/${dir} ]] && PATH=${PATH}:${HOME}/.rbenv/${dir}
-done
-[[ $(which rbenv) ]] && eval "$(rbenv init -)"
-
-## pyenv
-[[ $(which pyenv) ]] && eval "$(pyenv init -)"
-
-function berks_upload {
-  ${HOME}/.rbenv/shims/berks upload ${PWD##*/} --no-freeze --force  
-}
-
-
-
-
-if [ -f ~/.aws ]; then
-  source ~/.aws
-fi
-
->>>>>>> 184f663d0e4fa2cfa4af7289c58ef2a42d137aca
 ## PS1
 ## bash built-in colors  
 txtblk='\[\e[0;30m\]' ## black regular
@@ -105,12 +82,8 @@ red="${txtrst}[${HOSTNAME}:\w] ${bldred}\u${txtrst}% "
 purple="${txtrst}[${HOSTNAME}:\w] ${bldpur}\u${txtrst}% "
 yellow="${txtrst}[${HOSTNAME}:\w] ${bldylw}\u${txtrst}% "
 green="${txtrst}[${HOSTNAME}:\w] ${bldgrn}\u${txtrst}% "
-<<<<<<< HEAD
 rasta="${txtrst}${bldred}[${txtrst}${bldylw}${HOSTNAME}:\w${txtrst}${bldred}]${txtrst} ${bldgrn}\u%${txtrst} "
 PS1=$rasta
-=======
-PS1=$purple
->>>>>>> 184f663d0e4fa2cfa4af7289c58ef2a42d137aca
 
 ## check for emacs
 alias emacs=/usr/local/bin/emacs
