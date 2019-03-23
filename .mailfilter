@@ -1,18 +1,17 @@
 ##
 ## ~/.mailfilter
 ##
-DEFAULT="${HOME}/Maildir/"
+DEFAULT="${HOME}/Maildir"
 TYPE="maildir"
 logfile "${HOME}/.mailfilter.log"
 
 MAILDIRMAKE="/usr/bin/maildirmake"
 REFORMAIL="/usr/bin/reformail"
-FOLDERS="$DEFAULT/."
-SPAMTRAP="${FOLDERS}Z-Spamtrap"
 
-## make sure the spam directory exists
-${MAILDIRMAKE} -f Z-Spamtrap "$DEFAULT"
+## braze github
+if ( /^Subject:.*Appboy.*/:h )
+  to ${DEFAULT}/.Brazegit
 
 ## trap spam
 if ( /^X-MD-SPAM: YES/ )
-  to $SPAMTRAP
+  to ${DEFAULT}/.Z-Spamtrap
