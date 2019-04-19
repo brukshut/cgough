@@ -7,6 +7,7 @@ logfile "${HOME}/.mailfilter.log"
 
 MAILDIRMAKE="/usr/bin/maildirmake"
 REFORMAIL="/usr/bin/reformail"
+`${MAILDIRMAKE} -f .Z-Spamassassin "$DEFAULT"`
 
 ## braze github
 if ( /^Subject:.*Appboy.*/:h )
