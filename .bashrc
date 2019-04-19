@@ -16,10 +16,6 @@ function xtitle {
   esac
  export PS1=$PS1$TITLEBAR
 }
-
-function berks_upload {
-  ${HOME}/.rbenv/shims/berks upload ${PWD##*/} --no-freeze --force
-}
 ## end functions
 
 unalias -a
@@ -83,7 +79,7 @@ purple="${txtrst}[${HOSTNAME}:\w] ${bldpur}\u${txtrst}% "
 yellow="${txtrst}[${HOSTNAME}:\w] ${bldylw}\u${txtrst}% "
 green="${txtrst}[${HOSTNAME}:\w] ${bldgrn}\u${txtrst}% "
 rasta="${txtrst}${bldred}[${txtrst}${bldylw}${HOSTNAME}:\w${txtrst}${bldred}]${txtrst} ${bldgrn}\u%${txtrst} "
-PS1=$rasta
+PS1=$red
 
 ## check for emacs
 alias emacs=/usr/local/bin/emacs
