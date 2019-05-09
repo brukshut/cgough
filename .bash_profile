@@ -11,8 +11,9 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 ## refresh dotfiles
 [[ -d ${HOME}/.dotfiles ]] &&
   ( cd ${HOME}/.dotfiles
-    git pull --quiet
-    cd ${HOME} )
+    nc -z github.com 443 &>/dev/null &&
+      ( git pull --quiet
+        cd ${HOME} ))
 
 ## source .bashrc
 [[ -e ${HOME}/.bashrc ]] && source ${HOME}/.bashrc

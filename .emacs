@@ -55,7 +55,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (mmm-mode rinari web-mode enh-ruby-mode systemd markdown-mode chef-mode json-mode yaml-mode docker-compose-mode terraform-mode))))
+    (dockerfile-mode go-mode mmm-mode rinari web-mode enh-ruby-mode systemd markdown-mode chef-mode json-mode yaml-mode docker-compose-mode terraform-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
