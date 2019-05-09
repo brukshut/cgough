@@ -25,6 +25,7 @@ PAGER=less
 TERM=xterm-256color
 MANPATH=/usr/share/man:/usr/local/share/man
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin
+MAIL=${HOME}/Maildir/
 PATHDIR=""
 for DIR in $PATHDIR; do
   for BINDIR in bin sbin; do
@@ -104,7 +105,7 @@ done
 [[ $(which kubectl) ]] && source <(kubectl completion bash)
 
 ## export variables
-export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR GOPATH
+export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR GOPATH MAIL
 
 ## options
 set -o emacs
