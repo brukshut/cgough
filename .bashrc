@@ -22,7 +22,7 @@ unalias -a
 HISTCONTROL=ignoredups
 HISTSIZE=20000
 PAGER=less
-TERM=xterm
+TERM=xterm-256color
 MANPATH=/usr/share/man:/usr/local/share/man
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin
 PATHDIR=""
@@ -88,6 +88,9 @@ alias emacs=/usr/local/bin/emacs
     alias emacs="emacs -nw"
     alias emasc="emacs -nw" ) || EDITOR=vim
 
+## gopath
+GOPATH=${HOME}/go
+
 ## rbenv
 for dir in bin shims; do
   [[ -d ${HOME}/.rbenv/${dir} ]] && PATH=${PATH}:${HOME}/.rbenv/${dir}
@@ -101,7 +104,7 @@ done
 [[ $(which kubectl) ]] && source <(kubectl completion bash)
 
 ## export variables
-export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR
+export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR GOPATH
 
 ## options
 set -o emacs
