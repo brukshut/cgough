@@ -22,7 +22,7 @@ unalias -a
 HISTCONTROL=ignoredups
 HISTSIZE=20000
 PAGER=less
-TERM=xterm-new
+TERM=xterm-256color
 MANPATH=/usr/share/man:/usr/local/share/man
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${HOME}/bin
 PATHDIR=""
