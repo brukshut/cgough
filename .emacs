@@ -13,33 +13,36 @@
 ;; get rid of slashes for cut-n-paste
 (set-display-table-slot standard-display-table 'wrap ?\ )
 
-;; Disable transient-mark-mode (for emacs 23.1)
+;; disable transient-mark-mode
 (transient-mark-mode 0)
 
-;; Disable startup messages.
+;; disable startup messages
 (setq inhibit-startup-echo-area-message t)
 (setq initial-scratch-message nil)
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 
-;; Disable auto-identing
+;; disable auto-identing
 (setq indent-tabs-mode nil)
 (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
 
-;; Turn on font-lock mode for Emacs
+;; default tab width
+(setq-default tab-width 2)
+
+;; turn on font-lock mode for emacs
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 
-;; Enable ruby editing mode
+;; enable ruby mode
 (autoload 'ruby-mode "ruby-mode" "Major mode for editing Ruby code" t)
 (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
 (put 'set-goal-column 'disabled nil)
 
-;; yaml mode
+;; enable yaml mode
 (require 'yaml-mode nil 'missing-okay)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
-;; ELPA stuff
+;; elpa
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -62,4 +65,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
