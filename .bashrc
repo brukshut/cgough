@@ -96,10 +96,10 @@ GOPATH=${HOME}/go
 for dir in bin shims; do
   [[ -d ${HOME}/.rbenv/${dir} ]] && PATH=${PATH}:${HOME}/.rbenv/${dir}
 done
-[[ $(which rbenv) ]] && eval "$(rbenv init -)"
+[[ $(which rbenv > /dev/null 2>&1) ]] && eval "$(rbenv init -)"
 
 ## pyenv
-[[ $(which pyenv) ]] && eval "$(pyenv init -)"
+[[ $(which pyenv > /dev/null 2>&1) ]] && eval "$(pyenv init -)"
 
 ## kubectl completion
 [[ $(which kubectl) ]] && source <(kubectl completion bash)
