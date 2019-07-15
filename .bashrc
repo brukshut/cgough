@@ -102,7 +102,7 @@ done
 [[ $(which pyenv > /dev/null 2>&1) ]] && eval "$(pyenv init -)"
 
 ## kubectl completion
-[[ $(which kubectl) ]] && source <(kubectl completion bash)
+[[ $(which kubectl > /dev/null 2>&1) ]] && source <(kubectl completion bash)
 
 ## export variables
 export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR GOPATH MAIL
