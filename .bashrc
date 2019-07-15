@@ -96,13 +96,13 @@ GOPATH=${HOME}/go
 for dir in bin shims; do
   [[ -d ${HOME}/.rbenv/${dir} ]] && PATH=${PATH}:${HOME}/.rbenv/${dir}
 done
-[[ $(which rbenv > /dev/null 2>&1) ]] && eval "$(rbenv init -)"
+[[ $(command -v rbenv) ]] && eval "$(rbenv init -)"
 
 ## pyenv
-[[ $(which pyenv > /dev/null 2>&1) ]] && eval "$(pyenv init -)"
+[[ $(command -v pyenv) ]] && eval "$(pyenv init -)"
 
 ## kubectl completion
-[[ $(which kubectl > /dev/null 2>&1) ]] && source <(kubectl completion bash)
+[[ $(command -v kubectl) ]] && source <(kubectl completion bash)
 
 ## export variables
 export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR GOPATH MAIL
