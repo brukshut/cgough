@@ -13,9 +13,6 @@ REFORMAIL="/usr/bin/reformail"
 if ( /^X-MD-SPAM: YES/ )
   to ${DEFAULT}/.Z-Spamtrap
 
-## resy github
-if ( /^Subj: \[resy/ )
-  to ${DEFAULT}/.Resy
-
-if ( /\[resy/ )
-  to ${DEFAULT}/.Resy
+## algorithmia github
+if ( /^Subj: \/[algorithmia/ )
+  to ${DEFAULT}/.Algorithmia
