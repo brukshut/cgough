@@ -9,10 +9,12 @@ MAILDIRMAKE="/usr/bin/maildirmake"
 REFORMAIL="/usr/bin/reformail"
 `${MAILDIRMAKE} -f .Z-Spamassassin "$DEFAULT"`
 
+## algorithmia github
+if (/^Subject:.*algorithmiaio.*/)
+  to ${DEFAULT}/.Algorithmia
+
 ## trap spam
-if ( /^X-MD-SPAM: YES/ )
+if (/^X-MD-SPAM: YES/)
   to ${DEFAULT}/.Z-Spamtrap
 
-## algorithmia github
-if ( /^Subj: \/[algorithmia/ )
-  to ${DEFAULT}/.Algorithmia
+
