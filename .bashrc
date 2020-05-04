@@ -36,6 +36,11 @@ for DIR in $PATHDIR; do
   done
 done
 
+## override libressl in os x
+openssl_version=1.1.1g
+[[ $(uname) == 'Darwin' ]] && 
+  PATH=/usr/local/Cellar/openssl\@1.1/${openssl_version}/bin:$PATH
+
 ## PS1
 ## bash built-in colors  
 txtblk='\[\e[0;30m\]' ## black regular
