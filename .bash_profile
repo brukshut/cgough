@@ -8,13 +8,6 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
   ( keychain -q ${HOME}/.ssh/id_rsa
     source ${HOME}/.keychain/$HOSTNAME-sh )
 
-## refresh dotfiles
-[[ -d ${HOME}/.dotfiles ]] &&
-  ( cd ${HOME}/.dotfiles
-    nc -z github.com 443 &>/dev/null &&
-      ( git pull --quiet
-        cd ${HOME} ))
-
 ## source .bashrc
 [[ -e ${HOME}/.bashrc ]] && source ${HOME}/.bashrc
 

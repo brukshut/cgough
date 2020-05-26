@@ -94,6 +94,9 @@ alias emacs=/usr/local/bin/emacs
     alias emacs="emacs -nw"
     alias emasc="emacs -nw" ) || EDITOR=vim
 
+## remap docker detach keys
+alias "dr"="docker run --detach-keys='ctrl-p'"
+
 ## gopath
 GOPATH=${HOME}/go
 
@@ -111,6 +114,8 @@ done
 
 ## export variables
 export HISTCONTROL HISTSIZE PAGER PATH MANPATH PS1 TERMINFO TERM EDITOR GOPATH MAIL
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 ## options
 set -o emacs
