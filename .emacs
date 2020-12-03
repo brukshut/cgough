@@ -9,6 +9,10 @@
 (package-initialize)
 (setq load-path (cons "~/.emacs.d/site-lisp" load-path))
 
+;; sane scroll
+(setq scroll-step            1
+      scroll-conservatively  10000)
+
 ;; get rid of slashes for cut-n-paste
 (set-display-table-slot standard-display-table 'wrap ?\ )
 
