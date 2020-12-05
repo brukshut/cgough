@@ -1,0 +1,6 @@
+##
+## .muttrc
+##
+
+mbox ~/Maildir
+mbox_type maildir
