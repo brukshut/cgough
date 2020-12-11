@@ -37,7 +37,7 @@ for DIR in $PATHDIR; do
 done
 
 ## override libressl in os x
-openssl_version=1.1.1g
+openssl_version=1.1.1h
 [[ $(uname) == 'Darwin' ]] && 
   PATH=/usr/local/Cellar/openssl\@1.1/${openssl_version}/bin:$PATH
 
@@ -96,6 +96,12 @@ alias emacs=/usr/local/bin/emacs
 
 ## remap docker detach keys
 alias "dr"="docker run --detach-keys='ctrl-p'"
+
+## check for kubeconfigs
+[[ -e "${HOME}/.kc/admin-test-us-east-1.conf" ]] &&
+  alias ktest="export KUBECONFIG=${HOME}/.kc/admin-test-us-east-1.conf"
+[[ -e "${HOME}/.kc/admin-prod-us-east-1.conf" ]] &&
+  alias kprod="export KUBECONFIG=${HOME}/.kc/admin-prod-us-east-1.conf"
 
 ## gopath
 GOPATH=${HOME}/go
