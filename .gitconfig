@@ -1,11 +1,12 @@
 [user]
 	name = Christian Gough
-	email = brukshut@gmail.com
+	email = christian@gturn.xyz
 
 [color]
 	diff = auto
 	status = auto
 	branch = auto
+
 [core]
 	editor = /usr/local/bin/emacs
 
