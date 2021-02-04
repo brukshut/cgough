@@ -23,6 +23,9 @@
 ;; default tab width
 (setq-default tab-width 2)
 
+;; horizontal split
+(setq split-width-threshold 1)
+
 ;; turn on font-lock mode for emacs
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
